@@ -13,6 +13,7 @@
     "node-sass": "^4.11.0",
     "reset-css": "^4.0.1",
     "sass-loader": "^7.1.0",
+    "vexflow": "^1.2.88",
     "vue": "^2.6.6",
     "vue-chartist": "^2.2.0",
     "vue-router": "^3.0.1",
