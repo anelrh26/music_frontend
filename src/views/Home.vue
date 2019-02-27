@@ -4,7 +4,6 @@
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <keyboard msg="Music Thingy"/>
     <staff/>
-    <div id="boo"></div>
   </div>
 </template>
 

@@ -12,7 +12,7 @@
                     chunche:note.accidental
                 }"
         >
-          <a></a>
+          <a>{{note.id}}</a>
         </li>
       </ul>
     </div>
