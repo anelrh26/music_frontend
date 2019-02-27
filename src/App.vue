@@ -1,15 +1,8 @@
 <template>
   <div id="app">
-    <el-menu
-      theme="dark"
-      :default-active="activeIndex"
-      class="el-menu-demo"
-      mode="horizontal"
-      @select="handleSelect"
-      :router="true"
-    >
-      <el-menu-item index="1" :route="{ name: '/' }">Home</el-menu-item>
-      <el-menu-item index="2" :route="{ name: '/about' }">About</el-menu-item>
+    <el-menu theme="dark" class="el-menu-demo" mode="horizontal" :router="true">
+      <el-menu-item index="1" :route="{ name: 'home' }">Home</el-menu-item>
+      <el-menu-item index="2" :route="{ name: 'about' }">About</el-menu-item>
     </el-menu>
     <router-view/>
   </div>

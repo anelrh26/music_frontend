@@ -1,6 +1,5 @@
 <template>
   <div class="note_toolkit">
-    <div v-for="item in items" :key="item.id">{{ item }}</div>
     <el-button-group>
       <el-button type="primary" @click="onNoteOne">
         <img class="icons" src="@/assets/music_note_1.png">
