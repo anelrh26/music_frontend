@@ -3,7 +3,7 @@
     <el-button-group v-for="option in options" :key="option.id">
       <el-button type="primary" @click="onNoteClick(option.note)" :class="{ selected: option.selected }">
         <p>{{option.id}}</p>
-        <img class="icons" src='@/assets/music_note_4.png'>
+        <img class="icons" :src="getNoteImg(option.id)">
       </el-button>
     </el-button-group>
   </div>
@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       options: [
-        { selected: false, id: '1', note: 'W' },
+        { selected: false, id: '1', note: 'w' },
         { selected: false, id: '2', note: 'h' },
         { selected: false, id: '3', note: 'q' },
         { selected: false, id: '4', note: '8' },
@@ -26,6 +26,10 @@ export default {
   methods: {
     onNoteClick(note) {
       this.$store.dispatch('addNoteType', note);
+    },
+    getNoteImg(id) {
+      let images = require.context('../assets/', false, /\.png$/)
+      return images('./music_note_' + id + ".png")
     },
   },
 };
