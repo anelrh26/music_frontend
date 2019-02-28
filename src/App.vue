@@ -12,12 +12,6 @@
 <script>
 export default {
   name: 'home',
-  data() {
-    return {
-      homeRoute: '/',
-      aboutRoute: '/about',
-    };
-  },
 };
 </script>
 

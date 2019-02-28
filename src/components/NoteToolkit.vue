@@ -25,19 +25,19 @@ export default {
   name: 'NoteToolkit',
   methods: {
     onNoteOne() {
-      alert('note one');
+      this.$store.dispatch('addNoteType', 'W');
     },
     onNoteTwo() {
-      alert('note two');
+      this.$store.dispatch('addNoteType', 'h');
     },
     onNoteThree() {
-      alert('note three');
+      this.$store.dispatch('addNoteType', 'q');
     },
     onNoteFour() {
-      alert('note four');
+      this.$store.dispatch('addNoteType', '8');
     },
     onNoteFive() {
-      alert('note five');
+      this.$store.dispatch('addNoteType', '16');
     },
   },
 };

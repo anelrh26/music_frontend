@@ -5,6 +5,7 @@
         <li
           v-for="note in notes"
           :key="note.id"
+          @click="onKey(note.id)"
           :class="{
                     key:true,
                     whiteKey:note.type === 1,
@@ -29,6 +30,11 @@ export default {
     return {
       notes: this.$store.state.notes,
     };
+  },
+  methods: {
+    onKey(noteId) {
+      this.$store.dispatch('addNote', noteId);
+    },
   },
 };
 </script>
