@@ -1,20 +1,9 @@
 <template>
   <div class="note_toolkit">
-    <el-button-group>
-      <el-button type="primary" @click="onNoteOne">
-        <img class="icons" src="@/assets/music_note_1.png">
-      </el-button>
-      <el-button type="primary" @click="onNoteTwo">
-        <img class="icons" src="@/assets/music_note_2.png">
-      </el-button>
-      <el-button type="primary" @click="onNoteThree">
-        <img class="icons" src="@/assets/music_note_3.png">
-      </el-button>
-      <el-button type="primary" @click="onNoteFour">
-        <img class="icons" src="@/assets/music_note_4.png">
-      </el-button>
-      <el-button type="primary" @click="onNoteFive">
-        <img class="icons" src="@/assets/music_note_5.png">
+    <el-button-group v-for="option in options" :key="option.id">
+      <el-button type="primary" @click="onNoteClick(option.note)" :class="{ selected: option.selected }">
+        <p>{{option.id}}</p>
+        <img class="icons" src='@/assets/music_note_4.png'>
       </el-button>
     </el-button-group>
   </div>
@@ -23,21 +12,20 @@
 <script>
 export default {
   name: 'NoteToolkit',
+  data() {
+    return {
+      options: [
+        { selected: false, id: '1', note: 'W' },
+        { selected: false, id: '2', note: 'h' },
+        { selected: false, id: '3', note: 'q' },
+        { selected: false, id: '4', note: '8' },
+        { selected: false, id: '5', note: '16' },
+      ],
+    };
+  },
   methods: {
-    onNoteOne() {
-      this.$store.dispatch('addNoteType', 'W');
-    },
-    onNoteTwo() {
-      this.$store.dispatch('addNoteType', 'h');
-    },
-    onNoteThree() {
-      this.$store.dispatch('addNoteType', 'q');
-    },
-    onNoteFour() {
-      this.$store.dispatch('addNoteType', '8');
-    },
-    onNoteFive() {
-      this.$store.dispatch('addNoteType', '16');
+    onNoteClick(note) {
+      this.$store.dispatch('addNoteType', note);
     },
   },
 };
@@ -47,5 +35,9 @@ export default {
 .icons {
   height: 30px;
   width: 30px;
+}
+
+.selected {
+  background-color: #6ab2fc;
 }
 </style>
