@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -91,6 +92,18 @@ export default new Vuex.Store({
     },
     addNote({ commit }, note) {
       commit('ADD_NOTE', note);
+    },
+    fetchSongs() {
+      const axiosInstance = axios.create({
+        baseURL: 'http://localhost:3000/',
+        timeout: 1000,
+        headers: { 'Access-Control-Allow-Origin': '*' }
+      });
+      axiosInstance
+        .get('songs')
+        .then((response) => {
+          console.log('I fetched this for you', response.data);
+        });
     },
   },
 });

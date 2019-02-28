@@ -4,6 +4,7 @@
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <keyboard msg="Music Thingy"/>
     <staff/>
+    <button @click="clickMe()">CLICK ME</button>
     <p>Song</p>
     <p>{{pattern}}</p>
   </div>
@@ -25,6 +26,11 @@ export default {
     return {
       song: this.$store.state.song,
     };
+  },
+  methods: {
+    clickMe() {
+      this.$store.dispatch('fetchSongs');
+    },
   },
   computed: {
     pattern() {
