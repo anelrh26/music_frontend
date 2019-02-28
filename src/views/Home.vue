@@ -2,6 +2,8 @@
   <div class="home">
     <NoteToolkit/>
     <keyboard msg="Music Thingy"/>
+    <staff/>
+    <button @click="clickMe()">CLICK ME</button>
     <p>Song</p>
     <p>{{pattern}}</p>
   </div>
@@ -22,6 +24,11 @@ export default {
       song: this.$store.state.song,
     };
   },
+  methods: {
+    clickMe() {
+      this.$store.dispatch('fetchSongs');
+    },
+  },
   computed: {
     pattern() {
       let pattern = '';
@@ -37,6 +44,5 @@ export default {
       return pattern;
     },
   },
-  methods: {},
 };
 </script>
