@@ -1,9 +1,7 @@
 <template>
   <div class="home">
     <NoteToolkit/>
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <keyboard msg="Music Thingy"/>
-    <staff/>
     <p>Song</p>
     <p>{{pattern}}</p>
   </div>
@@ -12,14 +10,12 @@
 <script>
 import NoteToolkit from '@/components/NoteToolkit.vue';
 import keyboard from '@/components/keyboard.vue';
-import staff from '@/components/staff.vue';
 
 export default {
   name: 'home',
   components: {
     NoteToolkit,
     keyboard,
-    staff,
   },
   data() {
     return {
@@ -29,7 +25,7 @@ export default {
   computed: {
     pattern() {
       let pattern = '';
-      for (let i = 0; i < this.song.length; i++) {
+      for (let i = 0; i < this.song.length; i += 1) {
         const note = this.song[i];
         if (i === this.song.length - 1) {
           pattern = `${pattern} ${note}`;
@@ -41,5 +37,6 @@ export default {
       return pattern;
     },
   },
+  methods: {},
 };
 </script>

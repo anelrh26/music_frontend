@@ -7,89 +7,103 @@ export default new Vuex.Store({
   state: {
     song: [],
     noteType: '',
-    note: '',
-    notes: [
-      {
-        id: 'c4',
-        type: 1,
-        accidental: false,
-      },
-      {
-        id: 'c#4',
-        type: 2,
-        accidental: false,
-      },
-      {
-        id: 'd4',
-        type: 1,
-        accidental: true,
-      },
-      {
-        id: 'd#4',
-        type: 2,
-        accidental: false,
-      },
-      {
-        id: 'e4',
-        type: 1,
-        accidental: true,
-      },
-      {
-        id: 'f4',
-        type: 1,
-        accidental: false,
-      },
-      {
-        id: 'f#4',
-        type: 2,
-        accidental: false,
-      },
-      {
-        id: 'g4',
-        type: 1,
-        accidental: true,
-      },
-      {
-        id: 'g#4',
-        type: 2,
-        accidental: false,
-      },
-      {
-        id: 'a4',
-        type: 1,
-        accidental: true,
-      },
-      {
-        id: 'a#4',
-        type: 2,
-        accidental: false,
-      },
-      {
-        id: 'b',
-        type: 1,
-        accidental: true,
-      },
-      {
-        id: 'c5',
-        type: 1,
-        accidental: false,
-      },
+    noteDuration: 0,
+    test: 'this is a test',
+    note: {},
+    notes: [{
+      id: 'C/4',
+      type: 1,
+      accidental: false,
+    },
+    {
+      id: 'C#/4',
+      type: 2,
+      accidental: false,
+    },
+    {
+      id: 'D/4',
+      type: 1,
+      accidental: true,
+    },
+    {
+      id: 'D#/4',
+      type: 2,
+      accidental: false,
+    },
+    {
+      id: 'E/4',
+      type: 1,
+      accidental: true,
+    },
+    {
+      id: 'F/4',
+      type: 1,
+      accidental: false,
+    },
+    {
+      id: 'F#/4',
+      type: 2,
+      accidental: false,
+    },
+    {
+      id: 'G/4',
+      type: 1,
+      accidental: true,
+    },
+    {
+      id: 'G#/4',
+      type: 2,
+      accidental: false,
+    },
+    {
+      id: 'A/4',
+      type: 1,
+      accidental: true,
+    },
+    {
+      id: 'A#/4',
+      type: 2,
+      accidental: false,
+    },
+    {
+      id: 'B/4',
+      type: 1,
+      accidental: true,
+    },
+    {
+      id: 'C/5',
+      type: 1,
+      accidental: false,
+    },
     ],
   },
   mutations: {
-    ADD_NOTE_TYPE(state, noteType) {
-      state.noteType = noteType;
+    ADD_NOTE_TYPE(state, note) {
+      /* eslint no-param-reassign: 2 */
+      state.noteType = note.note;
+      state.noteDuration = note.duration;
     },
     ADD_NOTE(state, note) {
-      const { noteType } = state;
-      state.song.push(`${note}/${noteType}`);
+      const {
+        noteType,
+        noteDuration,
+      } = state;
+      state.song.push({
+        note: note.id,
+        duration: noteType,
+        value: noteDuration,
+      });
     },
   },
   actions: {
-    addNoteType({ commit }, noteType) {
-      commit('ADD_NOTE_TYPE', noteType);
+    addNoteType({
+      commit,
+    }, note) {
+      commit('ADD_NOTE_TYPE', note);
     },
-    addNote({ commit }, note) {
+    addNote({
+      commit,
+    }, note) {
       commit('ADD_NOTE', note);
     },
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="note_toolkit">
     <el-button-group v-for="option in options" :key="option.id">
-      <el-button type="primary" @click="onNoteClick(option.note)" :class="{ selected: option.selected }">
+      <el-button type="primary" @click="onNoteClick(option)" :class="{ selected: option.selected }">
         <p>{{option.id}}</p>
         <img class="icons" :src="getNoteImg(option.id)">
       </el-button>
@@ -15,11 +15,36 @@ export default {
   data() {
     return {
       options: [
-        { selected: false, id: '1', note: 'w' },
-        { selected: false, id: '2', note: 'h' },
-        { selected: false, id: '3', note: 'q' },
-        { selected: false, id: '4', note: '8' },
-        { selected: false, id: '5', note: '16' },
+        {
+          selected: false,
+          id: '1',
+          note: 'w',
+          duration: 4,
+        },
+        {
+          selected: false,
+          id: '2',
+          note: 'h',
+          duration: 2,
+        },
+        {
+          selected: false,
+          id: '3',
+          note: 'q',
+          duration: 1,
+        },
+        {
+          selected: false,
+          id: '4',
+          note: '8',
+          duration: 0.5,
+        },
+        {
+          selected: false,
+          id: '5',
+          note: '16',
+          duration: 0.25,
+        },
       ],
     };
   },
@@ -28,8 +53,8 @@ export default {
       this.$store.dispatch('addNoteType', note);
     },
     getNoteImg(id) {
-      let images = require.context('../assets/', false, /\.png$/)
-      return images('./music_note_' + id + ".png")
+      const images = require.context('../assets/', false, /\.png$/);
+      return images(`./music_note_${id}.png`);
     },
   },
 };

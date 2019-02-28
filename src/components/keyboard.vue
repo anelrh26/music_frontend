@@ -5,7 +5,7 @@
         <li
           v-for="note in notes"
           :key="note.id"
-          @click="onKey(note.id)"
+          @click="onKey(note)"
           :class="{
                     key:true,
                     whiteKey:note.type === 1,
@@ -17,10 +17,13 @@
         </li>
       </ul>
     </div>
+    <div class="staff" ref="staff"></div>
   </div>
 </template>
 
 <script>
+import Vex from 'vexflow';
+
 export default {
   name: 'keyboard',
   props: {
@@ -29,17 +32,64 @@ export default {
   data() {
     return {
       notes: this.$store.state.notes,
+      song: this.$store.state.song,
     };
+  },
+  mounted() {
+    this.staff();
   },
   methods: {
     onKey(noteId) {
       this.$store.dispatch('addNote', noteId);
+      this.staff();
+    },
+    staff() {
+      const VF = Vex.Flow;
+      this.$refs.staff.innerHTML = '';
+      const WorkspaceInformation = {
+        div: this.$refs.staff,
+        canvasWidth: 600,
+        canvasHeight: 200,
+      };
+      const renderer = new VF.Renderer(
+        WorkspaceInformation.div,
+        VF.Renderer.Backends.SVG,
+      );
+      renderer.resize(
+        WorkspaceInformation.canvasWidth,
+        WorkspaceInformation.canvasHeight,
+      );
+      const context = renderer.getContext();
+      context.setFont('Arial', 10, '').setBackgroundFillStyle('#eed');
+      const stave = new VF.Stave(10, 80, 600);
+      stave.addClef('treble').addTimeSignature('4/4');
+      stave.setContext(context).draw();
+      /**
+       * Draw notes
+       */
+      if (this.song[0] === undefined) {
+        return;
+      }
+      const notes = [];
+      let beatsDuration = 0;
+      for (let i = 0; i < this.song.length; i += 1) {
+        notes.push(
+          new VF.StaveNote({
+            keys: [this.song[i].note],
+            duration: this.song[i].duration,
+          }),
+        );
+        beatsDuration += this.song[i].value;
+      }
+      console.log('sooong', this.song);
+      const voice = new VF.Voice({ num_beats: beatsDuration, beat_value: 4 });
+      voice.addTickables(notes);
+      new VF.Formatter().joinVoices([voice]).format([voice], 200);
+      voice.draw(context, stave);
     },
   },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .keyboard {
   margin-top: 50px;
