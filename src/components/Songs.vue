@@ -28,8 +28,7 @@
         <el-input v-model="search" size="mini" placeholder="Type to search"/>
       </template>
       <template slot-scope="scope">
-        <el-button type="primary" icon="el-icon-caret-right" circle @click="playSong"></el-button>
-        <!--<el-button icon="el-icon-delete" circle @click="handleDelete(scope.$index, scope.row)"></el-button> -->
+        <el-button type="primary" icon="el-icon-caret-right" circle @click="playSong(scope.row.id)"></el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -37,23 +36,30 @@
 
 <script>
 export default {
-  name: "songs",
+  name: 'songs',
   data() {
     return {
-      tableData: this.$store.state.songs,
-      search: ""
+      search: '',
     };
   },
+  computed: {
+    tableData: {
+      get() {
+        return this.$store.state.songs;
+      },
+    },
+  },
   methods: {
-    playSong() {
-      window.open(
-        "http://synthesizeracademy.com/downloads/noise-demo.mp3",
-        "_blank"
-      );
-    }
-  }
+    playSong(id) {
+      window.open(`http://localhost:3000/songs/${id}/download`, '_blank');
+      return true;
+    },
+  },
 };
 </script>
 
 <style scoped>
+aside {
+  width: auto;
+}
 </style>

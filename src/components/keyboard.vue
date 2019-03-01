@@ -13,6 +13,7 @@
                     chunche:note.accidental
                 }"
         >
+          <a></a>
         </li>
       </ul>
     </div>
@@ -61,7 +62,7 @@ export default {
       const context = renderer.getContext();
       context.setFont('Arial', 10, '').setBackgroundFillStyle('#eed');
       const stave = new VF.Stave(10, 80, 600);
-      stave.addClef('treble').addTimeSignature('4/4');
+      stave.addClef('treble');
       stave.setContext(context).draw();
       /**
        * Draw notes
@@ -80,10 +81,10 @@ export default {
         );
         beatsDuration += this.song[i].value;
       }
-      console.log('sooong', this.song);
+      console.log('sooong', notes);
       const voice = new VF.Voice({ num_beats: beatsDuration, beat_value: 4 });
       voice.addTickables(notes);
-      new VF.Formatter().joinVoices([voice]).format([voice], 200);
+      new VF.Formatter().joinVoices([voice]).format([voice], 570);
       voice.draw(context, stave);
     },
   },

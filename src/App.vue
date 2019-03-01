@@ -20,12 +20,15 @@
 
 <script>
 export default {
-  name: "home",
+  name: 'home',
   data() {
     return {
-      activeIndex: "1"
+      activeIndex: '1',
     };
-  }
+  },
+  created() {
+    this.$store.dispatch('fetchSongs');
+  },
 };
 </script>
 

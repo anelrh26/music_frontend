@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "NoteToolkit",
+  name: 'NoteToolkit',
   data() {
     return {
       options: [
@@ -49,19 +49,15 @@ export default {
   },
   methods: {
     onNoteClick(option) {
-      for (let i = 0; i < this.options.length; i++) {
-        console.log('option.id'+ option.id);
-        console.log('options.id'+ this.options[i].id);
-        
+      for (let i = 0; i < this.options.length; i += 1) {
         if (option.id === this.options[i].id) {
           this.options[i].selected = true;
-        }else{
+        } else {
           this.options[i].selected = false;
         }
-        
       }
-      this.$store.dispatch("addNoteType", option);
-      console.log(JSON.stringify(this.options))
+      this.$store.dispatch('addNoteType', option);
+      console.log(JSON.stringify(this.options));
     },
     getNoteImg(id) {
       const images = require.context('../assets/', false, /\.png$/);
