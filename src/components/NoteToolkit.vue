@@ -2,7 +2,6 @@
   <div class="note_toolkit">
     <el-button-group v-for="option in options" :key="option.id">
       <el-button type="primary" @click="onNoteClick(option)" :class="{ selected: option.selected }">
-        <p>{{option.id}}</p>
         <img class="icons" :src="getNoteImg(option.id)">
       </el-button>
     </el-button-group>
@@ -11,7 +10,7 @@
 
 <script>
 export default {
-  name: 'NoteToolkit',
+  name: "NoteToolkit",
   data() {
     return {
       options: [
@@ -49,8 +48,20 @@ export default {
     };
   },
   methods: {
-    onNoteClick(note) {
-      this.$store.dispatch('addNoteType', note);
+    onNoteClick(option) {
+      for (let i = 0; i < this.options.length; i++) {
+        console.log('option.id'+ option.id);
+        console.log('options.id'+ this.options[i].id);
+        
+        if (option.id === this.options[i].id) {
+          this.options[i].selected = true;
+        }else{
+          this.options[i].selected = false;
+        }
+        
+      }
+      this.$store.dispatch("addNoteType", option);
+      console.log(JSON.stringify(this.options))
     },
     getNoteImg(id) {
       const images = require.context('../assets/', false, /\.png$/);

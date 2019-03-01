@@ -13,19 +13,37 @@
       <el-menu-item index="1" :route="{ name: 'home' }">Home</el-menu-item>
       <el-menu-item index="2" :route="{ name: 'about' }">About</el-menu-item>
     </el-menu>
-    <router-view id="content"/>
+    <el-container>
+      <el-aside width="455px" style="background-color: rgb(238, 241, 246)">
+        <Songs/>
+      </el-aside>
+      <el-main>
+        <router-view id="content"/>
+      </el-main>
+    </el-container>
   </div>
 </template>
 
 
 <script>
+import Songs from "@/components/Songs.vue";
+
 export default {
-  name: 'home',
-  data() {
-    return {
-      activeIndex: '1',
-    };
+  name: "home",
+  components: {
+    Songs
   },
+  data() {
+    const item = {
+      date: "2016-05-02",
+      song: "Cancion 1"
+    };
+    return {
+      activeIndex: "1",
+      tableData: Array(10).fill(item),
+      search: ""
+    };
+  }
 };
 </script>
 
