@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <el-main>
-      <el-row :gutter="12">
+      <el-row :gutter="12" class="people">
         <el-col :span="4">
           <el-card :body-style="{ padding: '0px' }">
             <img src="@/assets/anel.jpg" class="image">
@@ -53,6 +53,12 @@
 
 
 <style scoped>
+.people {
+  display: flex;
+  height: 800px;
+  justify-content: space-around;
+  align-items: center;
+}
 .lastRow {
   margin-top: 40px;
 }
@@ -91,8 +97,8 @@
 export default {
   data() {
     return {
-      currentDate: new Date(),
+      currentDate: new Date()
     };
-  },
+  }
 };
 </script>

@@ -24,7 +24,7 @@
       </template>
     </el-table-column>
     <el-table-column align="right" width="160">
-      <template slot="header">
+      <template slot="header" slot-scope="scope">
         <el-input v-model="search" size="mini" placeholder="Type to search"/>
       </template>
       <template v-if="scope.row.file" slot-scope="scope">
