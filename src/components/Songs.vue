@@ -3,7 +3,7 @@
     stripe
     empty-text="No Songs"
     :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-    style="width: 450px"
+    style="width: 420px"
   >
     <el-table-column label="Creation Date" width="120">
       <template slot-scope="scope">
@@ -23,15 +23,13 @@
         </el-popover>
       </template>
     </el-table-column>
-    <el-table-column width="60">
-      <el-button type="primary" icon="el-icon-caret-right" circle @click="playSong"></el-button>
-    </el-table-column>
     <el-table-column align="right" width="160">
       <template slot="header" slot-scope="scope">
         <el-input v-model="search" size="mini" placeholder="Type to search"/>
       </template>
       <template slot-scope="scope">
-        <el-button icon="el-icon-delete" circle @click="handleDelete(scope.$index, scope.row)"></el-button>
+        <el-button type="primary" icon="el-icon-caret-right" circle @click="playSong"></el-button>
+        <!--<el-button icon="el-icon-delete" circle @click="handleDelete(scope.$index, scope.row)"></el-button> -->
       </template>
     </el-table-column>
   </el-table>

@@ -13,35 +13,17 @@
       <el-menu-item index="1" :route="{ name: 'home' }">Home</el-menu-item>
       <el-menu-item index="2" :route="{ name: 'about' }">About</el-menu-item>
     </el-menu>
-    <el-container>
-      <el-aside width="455px" style="background-color: rgb(238, 241, 246)">
-        <Songs/>
-      </el-aside>
-      <el-main>
-        <router-view id="content"/>
-      </el-main>
-    </el-container>
+    <router-view id="content"/>
   </div>
 </template>
 
 
 <script>
-import Songs from "@/components/Songs.vue";
-
 export default {
   name: "home",
-  components: {
-    Songs
-  },
   data() {
-    const item = {
-      date: "2016-05-02",
-      song: "Cancion 1"
-    };
     return {
-      activeIndex: "1",
-      tableData: Array(10).fill(item),
-      search: ""
+      activeIndex: "1"
     };
   }
 };
@@ -49,16 +31,14 @@ export default {
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
 
-#content {
-  margin-top: 40px;
-}
 /*
 #nav {
   padding: 30px;
