@@ -78,6 +78,54 @@ export default new Vuex.Store({
       id: 'C/5',
       type: 1,
       accidental: false,
+    }, {
+      id: 'C#/5',
+      type: 2,
+      accidental: false,
+    }, {
+      id: 'D/5',
+      type: 1,
+      accidental: true,
+    }, {
+      id: 'D#/5',
+      type: 2,
+      accidental: false,
+    }, {
+      id: 'E/5',
+      type: 1,
+      accidental: true,
+    }, {
+      id: 'F/5',
+      type: 1,
+      accidental: false,
+    }, {
+      id: 'F#/5',
+      type: 2,
+      accidental: false,
+    }, {
+      id: 'G/5',
+      type: 1,
+      accidental: true,
+    }, {
+      id: 'G#/5',
+      type: 2,
+      accidental: false,
+    }, {
+      id: 'A/5',
+      type: 1,
+      accidental: true,
+    }, {
+      id: 'A#/5',
+      type: 2,
+      accidental: false,
+    }, {
+      id: 'B/5',
+      type: 1,
+      accidental: true,
+    }, {
+      id: 'C/6',
+      type: 1,
+      accidental: false,
     },
     ],
   },
@@ -120,7 +168,6 @@ export default new Vuex.Store({
     addMetaData({
       commit,
     }, songData) {
-      console.log('songData', songData);
       commit('ADD_METADA_SONG', songData);
     },
     fetchSongs({
@@ -138,9 +185,9 @@ export default new Vuex.Store({
       });
     },
     saveSong({
+      // eslint-disable-next-line no-unused-vars
       commit,
     }, songData) {
-      console.log('songData on store', songData);
       const axiosInstance2 = axios.create({
         baseURL: 'http://localhost:3000/',
         timeout: 1000,
@@ -157,7 +204,7 @@ export default new Vuex.Store({
             notes: this.state.song,
           }],
         })
-        .then((response) => {
+        .then(() => {
           this.dispatch('fetchSongs');
         });
     },

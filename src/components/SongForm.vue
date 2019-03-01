@@ -29,8 +29,6 @@ export default {
   },
   methods: {
     onSubmit() {
-      // this.$store.dispatch('addMetaData', this.formInline);
-      console.log('coso', this.formInline);
       this.$store.dispatch('saveSong', this.formInline);
     },
   },

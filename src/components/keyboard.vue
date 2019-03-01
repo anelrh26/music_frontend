@@ -73,13 +73,13 @@ export default {
       const notes = [];
       let beatsDuration = 0;
       for (let i = 0; i < this.song.length; i += 1) {
-        let noteData = this.song[i],
-            staveNote = new VF.StaveNote({
+        const noteData = this.song[i];
+        const staveNote = new VF.StaveNote({
           keys: [noteData.note],
           duration: noteData.duration,
         });
 
-        if(/#/.test(noteData.note)) {
+        if (/#/.test(noteData.note)) {
           staveNote.addAccidental(0, new VF.Accidental('#'));
         }
 

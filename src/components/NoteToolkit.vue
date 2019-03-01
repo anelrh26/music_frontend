@@ -57,7 +57,6 @@ export default {
         }
       }
       this.$store.dispatch('addNoteType', option);
-      console.log(JSON.stringify(this.options));
     },
     getNoteImg(id) {
       const images = require.context('../assets/', false, /\.png$/);
