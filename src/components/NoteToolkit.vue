@@ -15,7 +15,7 @@ export default {
     return {
       options: [
         {
-          selected: true,
+          selected: false,
           id: '1',
           note: 'w',
           duration: 4,
@@ -27,7 +27,7 @@ export default {
           duration: 2,
         },
         {
-          selected: false,
+          selected: true,
           id: '3',
           note: 'q',
           duration: 1,

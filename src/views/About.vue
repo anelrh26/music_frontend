@@ -37,7 +37,7 @@
         </el-col>
         <el-col :span="4">
           <el-card :body-style="{ padding: '0px' }">
-            <img src="@/assets/music_note_1.png" class="image">
+            <img src="@/assets/its_a_me.jpg" class="image">
             <div style="padding: 14px;">
               <span>Gabriel Madriz</span>
               <div class="bottom clearfix">
@@ -91,8 +91,8 @@
 export default {
   data() {
     return {
-      currentDate: new Date()
+      currentDate: new Date(),
     };
-  }
+  },
 };
 </script>

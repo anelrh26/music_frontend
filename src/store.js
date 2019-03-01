@@ -7,8 +7,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     song: [],
-    noteType: 'w',
-    noteDuration: 4,
+    noteType: 'q',
+    noteDuration: 1,
     test: 'this is a test',
     songName: '',
     songTempo: 120,
