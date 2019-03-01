@@ -73,15 +73,20 @@ export default {
       const notes = [];
       let beatsDuration = 0;
       for (let i = 0; i < this.song.length; i += 1) {
-        notes.push(
-          new VF.StaveNote({
-            keys: [this.song[i].note],
-            duration: this.song[i].duration,
-          }),
-        );
-        beatsDuration += this.song[i].value;
+        let noteData = this.song[i],
+            staveNote = new VF.StaveNote({
+          keys: [noteData.note],
+          duration: noteData.duration,
+        });
+
+        if(/#/.test(noteData.note)) {
+          staveNote.addAccidental(0, new VF.Accidental('#'));
+        }
+
+        notes.push(staveNote);
+
+        beatsDuration += noteData.value;
       }
-      console.log('sooong', notes);
       const voice = new VF.Voice({ num_beats: beatsDuration, beat_value: 4 });
       voice.addTickables(notes);
       new VF.Formatter().joinVoices([voice]).format([voice], 570);

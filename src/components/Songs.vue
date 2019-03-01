@@ -27,7 +27,7 @@
       <template slot="header" slot-scope="scope">
         <el-input v-model="search" size="mini" placeholder="Type to search"/>
       </template>
-      <template slot-scope="scope">
+      <template v-if="scope.row.file" slot-scope="scope">
         <el-button type="primary" icon="el-icon-caret-right" circle @click="playSong(scope.row.id)"></el-button>
       </template>
     </el-table-column>
